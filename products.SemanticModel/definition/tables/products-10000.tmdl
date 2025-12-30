@@ -1,0 +1,124 @@
+table products-10000
+	lineageTag: 2a0d6720-4cd9-4519-9d0f-27309f12999c
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: f9cdb20a-a78b-4869-980a-5cc12e23373e
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: cdfc2866-1fa4-48ca-8d33-56876dfd5820
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: c55dc83a-fcdc-4912-8680-0d8bd6072e98
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: 7d85c71f-ae0c-4738-a7c6-179ecc9166ed
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 76d872e4-0f51-4dbf-9cbc-89e272f3e390
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: int64
+		formatString: 0
+		lineageTag: 0858dba0-eff8-405b-8496-5973ff912008
+		summarizeBy: sum
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: bd9e6080-c142-4027-b1c5-015d877ff8b8
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stock
+		dataType: int64
+		formatString: 0
+		lineageTag: a0ea0e90-959f-46bd-8592-5505e2431de4
+		summarizeBy: sum
+		sourceColumn: Stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column EAN
+		dataType: int64
+		formatString: 0
+		lineageTag: f413d979-2daf-401c-9bc0-2ebd14d08fad
+		summarizeBy: sum
+		sourceColumn: EAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 8d1bdf01-b7b2-48f0-8854-f6eff3302f59
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Size
+		dataType: string
+		lineageTag: 6d52f41d-a70d-4608-a790-3af5c96c3580
+		summarizeBy: none
+		sourceColumn: Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column Availability
+		dataType: string
+		lineageTag: 00d11242-d8b3-44a2-8bb5-678960484297
+		summarizeBy: none
+		sourceColumn: Availability
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Internal ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 81ec3494-34d4-4929-a85a-9285263c4529
+		summarizeBy: count
+		sourceColumn: Internal ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition products-10000 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/mahendra-shinde/fabrics-ws-101/refs/heads/main/products-10000.csv"),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Index", Int64.Type}, {"Name", type text}, {"Description", type text}, {"Brand", type text}, {"Category", type text}, {"Price", Int64.Type}, {"Currency", type text}, {"Stock", Int64.Type}, {"EAN", Int64.Type}, {"Color", type text}, {"Size", type text}, {"Availability", type text}, {"Internal ID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

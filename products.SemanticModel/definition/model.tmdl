@@ -1,0 +1,18 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["products-10000"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table products-10000
+
+ref cultureInfo en-IN
+
