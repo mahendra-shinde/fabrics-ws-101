@@ -1,0 +1,126 @@
+table mlsamples___parquet
+	lineageTag: 2f5c4fe9-0e48-4e2d-be37-b1196e56cc90
+	sourceLineageTag: [dbo].[mlsamples___parquet]
+
+	column AGE
+		dataType: int64
+		formatString: 0
+		lineageTag: f706c221-af65-4d1e-be92-30d09d9f7a7f
+		sourceLineageTag: AGE
+		summarizeBy: sum
+		sourceColumn: AGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEX
+		dataType: int64
+		formatString: 0
+		lineageTag: 4461265e-14af-4610-9e68-8048bb01cc56
+		sourceLineageTag: SEX
+		summarizeBy: sum
+		sourceColumn: SEX
+
+		annotation SummarizationSetBy = Automatic
+
+	column BMI
+		dataType: double
+		lineageTag: d6a63487-2aec-437b-96e8-23881cefabed
+		sourceLineageTag: BMI
+		summarizeBy: sum
+		sourceColumn: BMI
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BP
+		dataType: double
+		lineageTag: a4fa6481-1041-43db-b649-09deceb10304
+		sourceLineageTag: BP
+		summarizeBy: sum
+		sourceColumn: BP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S1
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aae38b6-f644-4d52-a041-a53d91fc9d52
+		sourceLineageTag: S1
+		summarizeBy: sum
+		sourceColumn: S1
+
+		annotation SummarizationSetBy = Automatic
+
+	column S2
+		dataType: double
+		lineageTag: ab11edcf-af90-42f7-8739-f29ba01a10cc
+		sourceLineageTag: S2
+		summarizeBy: sum
+		sourceColumn: S2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S3
+		dataType: double
+		lineageTag: 85581b93-b1f8-4a5c-8bab-bf2794eef3f5
+		sourceLineageTag: S3
+		summarizeBy: sum
+		sourceColumn: S3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S4
+		dataType: double
+		lineageTag: 4d1c16eb-56e9-4969-a51a-f54e9ca8f3b0
+		sourceLineageTag: S4
+		summarizeBy: sum
+		sourceColumn: S4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S5
+		dataType: double
+		lineageTag: e2e86770-fad9-49fe-b0b5-c324e53c6356
+		sourceLineageTag: S5
+		summarizeBy: sum
+		sourceColumn: S5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column S6
+		dataType: int64
+		formatString: 0
+		lineageTag: b8a44ec6-7e71-4019-b12d-e22d0f7c85fc
+		sourceLineageTag: S6
+		summarizeBy: sum
+		sourceColumn: S6
+
+		annotation SummarizationSetBy = Automatic
+
+	column Y
+		dataType: int64
+		formatString: 0
+		lineageTag: 28a270b2-1a42-4e18-a0c5-ac2aa8243b1e
+		sourceLineageTag: Y
+		summarizeBy: sum
+		sourceColumn: Y
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mlsamples___parquet = entity
+		mode: directLake
+		source
+			entityName: mlsamples___parquet
+			expressionSource: 'DirectLake - MedicalRecords'
+

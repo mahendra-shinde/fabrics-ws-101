@@ -1,0 +1,9 @@
+expression 'DirectLake - MedicalRecords' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/39c745ba-b5ce-4870-83b7-4277cf5e2399/3579e1ec-b4a6-4bf5-bc10-eaa577f3da32", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 3f9095b0-3c97-461b-9e31-5d9ecaca05ad
+
+	annotation PBI_IncludeFutureArtifacts = False
+
